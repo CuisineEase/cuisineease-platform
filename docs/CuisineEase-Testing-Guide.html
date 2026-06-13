@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CuisineEase — Simple Testing Guide</title>
+  <style>
+    @page { margin: 16mm 14mm; size: A4; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      font-size: 22pt;
+      color: #c2410c;
+      border-bottom: 3px solid #f97316;
+      padding-bottom: 8px;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 14pt;
+      color: #9a3412;
+      margin-top: 22px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 12pt;
+      color: #374151;
+      margin-top: 14px;
+      page-break-after: avoid;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 14px;
+      font-size: 10pt;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 7px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #fff7ed; font-weight: 600; }
+    ul, ol { margin: 6px 0 12px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+    .intro {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 12px 14px;
+      margin: 14px 0;
+    }
+    .success {
+      background: #ecfdf5;
+      border-left: 4px solid #10b981;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 10pt;
+    }
+    .warning {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 10pt;
+    }
+    .note {
+      background: #f3f4f6;
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: 10pt;
+      margin: 10px 0;
+    }
+    .step-num {
+      display: inline-block;
+      background: #f97316;
+      color: white;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border-radius: 50%;
+      margin-right: 8px;
+      font-size: 10pt;
+    }
+    .checklist li { list-style: none; margin-left: -18px; }
+    .checklist li::before { content: "☐ "; }
+    .page-break { page-break-before: always; }
+    .footer {
+      margin-top: 24px;
+      padding-top: 10px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 9pt;
+      color: #6b7280;
+    }
+    .report-box {
+      border: 1px solid #d1d5db;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 9.5pt;
+      white-space: pre-wrap;
+      background: #fafafa;
+    }
+    .flow-box {
+      border: 1px solid #fed7aa;
+      background: #fff7ed;
+      padding: 14px;
+      border-radius: 6px;
+      margin: 12px 0;
+    }
+    strong { color: #111827; }
+  </style>
+</head>
+<body>
+
+<h1>CuisineEase — Simple Testing Guide</h1>
+
+<div class="intro">
+  <strong>Who is this for?</strong> Anyone testing CuisineEase — no technical skills needed. You only need a phone or computer, a web browser, and an email address. Follow each step in order.
+</div>
+
+<h2>Website to test</h2>
+<table>
+  <tr><th>Item</th><th>What to use</th></tr>
+  <tr><td>Main website</td><td><strong>https://www.cuisineease.com</strong></td></tr>
+  <tr><td>Browser</td><td>Google Chrome (recommended), Firefox, or Microsoft Edge — latest version</td></tr>
+  <tr><td>Email</td><td>A real email you can open (for codes and password links)</td></tr>
+  <tr><td>Phone number</td><td>Cameroon format, e.g. <strong>+237 677 123 456</strong> (must start with +237)</td></tr>
+  <tr><td>Password rules</td><td>8 to 20 characters · at least one number · at least one special character (like ! @ #)</td></tr>
+  <tr><td>Example password</td><td><strong>TestPass1!</strong></td></tr>
+</table>
+
+<div class="warning">
+  <strong>Important tips before you start</strong>
+  <ul style="margin-bottom:0">
+    <li>Use <strong>two browsers</strong> (or one normal window + one private/incognito window): one for the restaurant manager, one for the customer.</li>
+    <li>Write down every email and password you create.</li>
+    <li>Check your <strong>inbox and spam folder</strong> for emails from CuisineEase.</li>
+    <li>If something does not work, take a <strong>screenshot</strong> and note the exact step number.</li>
+  </ul>
+</div>
+
+<h2>What are you testing?</h2>
+<table>
+  <tr><th>User type</th><th>What they do on CuisineEase</th></tr>
+  <tr><td><strong>Restaurant manager</strong></td><td>Registers a restaurant, adds food to the menu, manages orders, tables, and reservations</td></tr>
+  <tr><td><strong>Customer</strong></td><td>Creates an account, browses restaurants, orders food, pays, books tables, and leaves reviews</td></tr>
+  <tr><td><strong>Visitor</strong> (no account)</td><td>Browses the public website, reads about CuisineEase, and sends a contact message</td></tr>
+</table>
+
+<h2>Recommended test order (follow this sequence)</h2>
+<div class="flow-box">
+  <ol>
+    <li>Register a <strong>restaurant</strong> (creates the manager account)</li>
+    <li>Manager sets up <strong>menu items</strong> and <strong>tables</strong></li>
+    <li>Register a <strong>customer</strong> account (in a different browser)</li>
+    <li>Customer <strong>browses, adds to cart, and pays</strong></li>
+    <li>Manager <strong>updates the order status</strong></li>
+    <li>Customer checks that the <strong>order status changed</strong></li>
+    <li>Test <strong>table booking</strong>, <strong>reviews</strong>, <strong>profile settings</strong>, and the <strong>contact page</strong></li>
+  </ol>
+</div>
+
+<h2 class="page-break">PART A — Restaurant manager testing</h2>
+
+<h3><span class="step-num">1</span> Open the registration page</h3>
+<ol>
+  <li>Open your browser and go to <strong>https://www.cuisineease.com</strong></li>
+  <li>Click <strong>Register</strong> (top of the page), or go directly to:<br>
+    <strong>https://www.cuisineease.com/auth/register</strong></li>
+  <li>On the welcome screen, click the <strong>Restaurant Admin</strong> option (the one with the shop icon)</li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> A page titled “Register Your Restaurant” showing “Step 1 of 3”.</div>
+
+<h3><span class="step-num">2</span> Step 1 of 3 — Restaurant details</h3>
+<p>Fill in every required field, then click <strong>Next</strong>.</p>
+<table>
+  <tr><th>Field</th><th>Example to type</th></tr>
+  <tr><td>Restaurant name</td><td>Test Kitchen Buea</td></tr>
+  <tr><td>Description</td><td>A friendly test restaurant for CuisineEase testing</td></tr>
+  <tr><td>Restaurant email</td><td>bistro.test@example.com</td></tr>
+  <tr><td>Restaurant phone</td><td>+237 677 111 001</td></tr>
+  <tr><td>Restaurant type</td><td>Pick one from the list (e.g. Restaurant)</td></tr>
+  <tr><td>Cuisine types</td><td>Tick at least one (e.g. Cameroonian)</td></tr>
+</table>
+
+<h3><span class="step-num">3</span> Step 2 of 3 — Location &amp; opening hours</h3>
+<ol>
+  <li>Fill in <strong>Street</strong>, <strong>City</strong> (e.g. Buea), and <strong>Country</strong> (Cameroon)</li>
+  <li>Latitude and longitude may fill in automatically — if not, use <strong>4.15</strong> and <strong>9.24</strong></li>
+  <li>Under <strong>Booking days</strong>, tick at least Monday through Saturday</li>
+  <li>Set <strong>Opening hours</strong> (e.g. open 08:00, close 22:00)</li>
+  <li>Tick <strong>This restaurant offers delivery</strong> if you plan to test delivery orders</li>
+  <li>Click <strong>Next</strong></li>
+</ol>
+
+<h3><span class="step-num">4</span> Step 3 of 3 — Manager account</h3>
+<table>
+  <tr><th>Field</th><th>Example to type</th></tr>
+  <tr><td>Manager full name</td><td>QA Manager</td></tr>
+  <tr><td>Manager email</td><td>manager.test@example.com <em>(write this down — you will need it)</em></td></tr>
+  <tr><td>Manager phone</td><td>+237 677 111 002</td></tr>
+</table>
+<p>Logo and cover photo are optional. Click <strong>Register restaurant</strong>.</p>
+<div class="success"><strong>✓ You should see:</strong> A “Check your email” page telling you to open the email sent to your manager address.</div>
+
+<h3><span class="step-num">5</span> Set your manager password from email</h3>
+<ol>
+  <li>Open the email inbox for the manager email you used</li>
+  <li>Look for an email from CuisineEase (check spam if needed)</li>
+  <li>Click the link in the email to <strong>set your password</strong></li>
+  <li>Choose a password that follows the rules above (e.g. <strong>Manager1!</strong>)</li>
+</ol>
+<div class="note">If you do not receive the email within a few minutes, go to <strong>https://www.cuisineease.com/auth/forgot-password</strong> and request a new link.</div>
+
+<h3><span class="step-num">6</span> Log in as manager</h3>
+<ol>
+  <li>Go to <strong>https://www.cuisineease.com/auth/login</strong></li>
+  <li>Enter your manager email and password</li>
+  <li>Click <strong>Sign in</strong> / <strong>Login</strong></li>
+</ol>
+<div class="warning">
+  <strong>After login, one of two things will happen:</strong>
+  <ul style="margin-bottom:0">
+    <li><strong>Application under review</strong> — Your restaurant is waiting for CuisineEase team approval (can take up to 48 hours). This is normal for new restaurants. Contact the CuisineEase team if you need the account activated for testing.</li>
+    <li><strong>Manager dashboard</strong> — You go straight to the manager area. Continue to Step 7.</li>
+  </ul>
+</div>
+
+<h3 class="page-break"><span class="step-num">7</span> Add a food item to the menu</h3>
+<ol>
+  <li>In the left menu, click <strong>Menu</strong></li>
+  <li>Click the <strong>Add New Menu</strong> button (top right)</li>
+  <li>Fill in the form:
+    <ul>
+      <li><strong>Name</strong> — e.g. Grilled Chicken</li>
+      <li><strong>Category</strong> — pick one (e.g. Main Course)</li>
+      <li><strong>Price</strong> — e.g. 3500 (in XAF)</li>
+      <li><strong>Description</strong> — short description of the dish</li>
+      <li><strong>Image</strong> — upload any food photo</li>
+      <li>Leave other fields as default if unsure</li>
+    </ul>
+  </li>
+  <li>Click <strong>Save</strong></li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> The new dish appears in the menu list. Try clicking <strong>Edit</strong> and <strong>Delete</strong> on a test item to confirm those work too.</div>
+
+<h3><span class="step-num">8</span> Add a table (for reservations)</h3>
+<ol>
+  <li>In the left menu, click <strong>Tables</strong></li>
+  <li>First, create a <strong>section</strong> (e.g. name it <strong>A</strong> — use a capital letter)</li>
+  <li>Then click <strong>Add table</strong></li>
+  <li>Choose the section, set <strong>seats</strong> to 4, and save</li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> Your new table listed on the Tables page.</div>
+
+<h3><span class="step-num">9</span> Quick check — manager pages load correctly</h3>
+<p>Open each item in the left sidebar and confirm the page opens without errors:</p>
+<table>
+  <tr><th>Page</th><th>What to check</th></tr>
+  <tr><td>Overview</td><td>Dashboard loads</td></tr>
+  <tr><td>Menu</td><td>Your food item is visible</td></tr>
+  <tr><td>Orders</td><td>Page opens (may be empty until a customer orders)</td></tr>
+  <tr><td>Reservations</td><td>Page opens</td></tr>
+  <tr><td>Tables</td><td>Your table is listed</td></tr>
+  <tr><td>Inventory</td><td>Page opens</td></tr>
+  <tr><td>Staff</td><td>Page opens</td></tr>
+  <tr><td>Reviews</td><td>Page opens</td></tr>
+  <tr><td>Notifications</td><td>Page opens</td></tr>
+  <tr><td>Settings</td><td>Page opens</td></tr>
+</table>
+
+<h2 class="page-break">PART B — Customer testing</h2>
+<div class="warning"><strong>Use a private/incognito window or a different browser</strong> so you are not still logged in as the manager.</div>
+
+<h3><span class="step-num">10</span> Register a customer account</h3>
+<ol>
+  <li>Go to <strong>https://www.cuisineease.com/auth/register</strong></li>
+  <li>Click <strong>Customer</strong> (the person icon)</li>
+  <li>Fill in:
+    <ul>
+      <li><strong>Full name</strong> — e.g. Test Customer</li>
+      <li><strong>Email</strong> — e.g. customer.test@example.com</li>
+      <li><strong>Phone</strong> — e.g. +237 677 222 003</li>
+      <li><strong>Password</strong> — e.g. Customer1!</li>
+      <li><strong>Confirm password</strong> — same as above</li>
+    </ul>
+  </li>
+  <li>Tick the box to <strong>accept Terms and Privacy Policy</strong></li>
+  <li>Click <strong>Register</strong></li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> A message asking you to verify your email, and a page to enter a 6-digit code.</div>
+
+<h3><span class="step-num">11</span> Verify your email</h3>
+<ol>
+  <li>Check your email inbox (and spam) for a verification code from CuisineEase</li>
+  <li>Enter the <strong>6-digit code</strong> on the verification page</li>
+  <li>Click to confirm</li>
+  <li>When successful, click <strong>Continue to Login</strong></li>
+</ol>
+
+<h3><span class="step-num">12</span> Log in as customer</h3>
+<ol>
+  <li>Go to <strong>https://www.cuisineease.com/auth/customer/login</strong> or <strong>/auth/login</strong></li>
+  <li>Enter your customer email and password</li>
+  <li>Click <strong>Sign in</strong></li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> The customer dashboard with a menu and sidebar (Restaurants, Cart, Order History, etc.).</div>
+
+<h3><span class="step-num">13</span> Browse restaurants and food</h3>
+<ol>
+  <li>In the sidebar, click <strong>Restaurants</strong></li>
+  <li>Find the restaurant you registered (e.g. Test Kitchen Buea) and click on it</li>
+  <li>Browse the menu — you should see the food item the manager added</li>
+  <li>Click on a dish to see its details (name, price, description)</li>
+</ol>
+
+<h3><span class="step-num">14</span> Add food to your cart</h3>
+<ol>
+  <li>On a dish page, choose any add-ons if shown (optional)</li>
+  <li>Add special instructions if you want (optional)</li>
+  <li>Click <strong>Add to Cart</strong></li>
+  <li>Click the <strong>Cart</strong> icon or go to <strong>Cart</strong> in the sidebar</li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> Your item in the cart with the correct name, quantity, and price.</div>
+
+<h3><span class="step-num">15</span> Add to favourites (optional)</h3>
+<ol>
+  <li>On a restaurant or dish page, click the <strong>heart</strong> icon</li>
+  <li>Go to <strong>Favorites</strong> in the sidebar</li>
+  <li>Confirm the item or restaurant appears there</li>
+</ol>
+
+<h3><span class="step-num">16</span> Pay and place your order</h3>
+<ol>
+  <li>Open your <strong>Cart</strong></li>
+  <li>Change the quantity using + / − buttons if you want</li>
+  <li>Choose order type: <strong>Delivery</strong>, <strong>Takeout</strong>, or <strong>Dine-in</strong></li>
+  <li>On the payment side, select <strong>Mobile Money</strong> (recommended for testing)</li>
+  <li>Choose <strong>MTN</strong> or <strong>Orange</strong> and enter a phone number (e.g. +237 677 222 003)</li>
+  <li>Check the total — delivery fee may be added for delivery orders</li>
+  <li>Click the button to <strong>place your order / pay</strong></li>
+</ol>
+<div class="note">Card and PayPal options may appear on screen but are not fully connected yet. Always use <strong>Mobile Money</strong> for testing payments.</div>
+<div class="success"><strong>✓ You should see:</strong> A success message and your cart becomes empty.</div>
+
+<h3><span class="step-num">17</span> Check your order history</h3>
+<ol>
+  <li>Click <strong>Order History</strong> in the sidebar</li>
+  <li>Find the order you just placed</li>
+  <li>Click on it to see details (items, total, status)</li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> Your order listed with status <strong>New</strong> or <strong>Pending</strong>.</div>
+
+<h3><span class="step-num">18</span> Book a table (reservation)</h3>
+<ol>
+  <li>Go to <strong>Restaurants</strong> and open your test restaurant</li>
+  <li>Find the <strong>Tables</strong> or <strong>Book a table</strong> section</li>
+  <li>Pick a date, time, and number of guests</li>
+  <li>Complete the booking steps and pay if asked (Mobile Money)</li>
+  <li>Go to <strong>Reservations</strong> in the sidebar to confirm it appears</li>
+</ol>
+
+<h3><span class="step-num">19</span> Leave a review</h3>
+<ol>
+  <li>On a restaurant or dish page, find the <strong>Reviews</strong> tab</li>
+  <li>Give a star rating and write a short comment</li>
+  <li>Submit the review</li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> Your review appears on the page after submitting.</div>
+
+<h3><span class="step-num">20</span> Update your profile</h3>
+<ol>
+  <li>Click <strong>Settings</strong> in the sidebar</li>
+  <li>Try updating your name or profile photo</li>
+  <li>Open <strong>Notifications</strong> settings and toggle an option</li>
+  <li>Open <strong>Security</strong> and confirm the page loads</li>
+</ol>
+
+<h2 class="page-break">PART C — Manager handles the customer order</h2>
+<p>Switch back to your <strong>manager browser</strong> (Step 6 login).</p>
+
+<h3><span class="step-num">21</span> Find and update the order</h3>
+<ol>
+  <li>Click <strong>Orders</strong> in the manager sidebar</li>
+  <li>Find the customer's order in the list</li>
+  <li>Click on the order to open details</li>
+  <li>Update the status step by step:
+    <ul>
+      <li>Click <strong>Start preparing</strong></li>
+      <li>Then <strong>Mark ready</strong></li>
+      <li>Then <strong>Mark delivered</strong></li>
+    </ul>
+  </li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> The status badge changes after each click.</div>
+
+<h3><span class="step-num">22</span> Customer checks updated status</h3>
+<ol>
+  <li>Switch to the <strong>customer browser</strong></li>
+  <li>Go to <strong>Order History</strong> and open the same order</li>
+  <li>Refresh the page if needed</li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> The order status matches what the manager set (Preparing → Ready → Delivered).</div>
+
+<h3><span class="step-num">23</span> Manager checks reservation and review</h3>
+<ol>
+  <li>As manager, open <strong>Reservations</strong> — the customer's booking should appear</li>
+  <li>Open <strong>Reviews</strong> — the customer's review should appear</li>
+</ol>
+
+<h2 class="page-break">PART D — Public website (no login needed)</h2>
+
+<h3><span class="step-num">24</span> Browse the public pages</h3>
+<p>Log out (or use a fresh browser window) and visit these pages:</p>
+<table>
+  <tr><th>Page</th><th>Link</th><th>What to check</th></tr>
+  <tr><td>Home</td><td>https://www.cuisineease.com</td><td>Page loads, images show, links work</td></tr>
+  <tr><td>Menu</td><td>https://www.cuisineease.com/menu</td><td>Food items display</td></tr>
+  <tr><td>About</td><td>https://www.cuisineease.com/about</td><td>Text and images load</td></tr>
+  <tr><td>Contact</td><td>https://www.cuisineease.com/contact</td><td>Form and FAQ load</td></tr>
+  <tr><td>Privacy</td><td>https://www.cuisineease.com/privacy</td><td>Policy text loads</td></tr>
+  <tr><td>Terms</td><td>https://www.cuisineease.com/terms</td><td>Terms text loads</td></tr>
+</table>
+
+<h3><span class="step-num">25</span> Send a contact message</h3>
+<ol>
+  <li>Go to <strong>https://www.cuisineease.com/contact</strong></li>
+  <li>Fill in your name, email, subject, and message</li>
+  <li>Click <strong>Send</strong></li>
+</ol>
+<div class="success"><strong>✓ You should see:</strong> A success message confirming your message was sent.</div>
+
+<h2>PART E — Login, logout &amp; security checks</h2>
+<table>
+  <tr><th>Test</th><th>How to test</th><th>Expected result</th></tr>
+  <tr><td>Correct login</td><td>Log in with the right email and password</td><td>You reach the correct dashboard (customer or manager)</td></tr>
+  <tr><td>Wrong password</td><td>Enter a wrong password on purpose</td><td>A clear error message appears — you are not logged in</td></tr>
+  <tr><td>Logout</td><td>Click Logout from the menu</td><td>You are signed out; going back to the dashboard asks you to log in again</td></tr>
+  <tr><td>Customer cannot access manager area</td><td>While logged in as customer, try to open the manager pages</td><td>You are blocked or redirected — customer should not see manager tools</td></tr>
+  <tr><td>Forgot password</td><td>Go to Forgot Password, enter your email</td><td>A reset email arrives (check spam)</td></tr>
+  <tr><td>Mobile view</td><td>Resize browser to phone size or test on a phone</td><td>Pages still work and buttons are easy to tap</td></tr>
+</table>
+
+<h2 class="page-break">Full testing checklist</h2>
+<p>Tick each item when it works correctly:</p>
+<ul class="checklist">
+  <li>Restaurant registration (all 3 steps) works</li>
+  <li>Manager receives email and can set password</li>
+  <li>Manager can log in</li>
+  <li>Manager can add, edit, and delete a menu item</li>
+  <li>Manager can add a table section and table</li>
+  <li>All manager sidebar pages open without errors</li>
+  <li>Customer registration works</li>
+  <li>Customer email verification (6-digit code) works</li>
+  <li>Customer can log in</li>
+  <li>Customer can browse restaurants and see menu items</li>
+  <li>Customer can add items to cart</li>
+  <li>Customer can pay with Mobile Money and place an order</li>
+  <li>Order appears in customer Order History</li>
+  <li>Order appears in manager Orders</li>
+  <li>Manager can update order status (Preparing → Ready → Delivered)</li>
+  <li>Customer sees updated order status</li>
+  <li>Table reservation works (customer + manager)</li>
+  <li>Review submission works (customer + manager)</li>
+  <li>Customer profile/settings can be updated</li>
+  <li>Contact form on public website works</li>
+  <li>Public pages (Home, Menu, About) load correctly</li>
+  <li>Logout works</li>
+  <li>Wrong password shows a clear error</li>
+</ul>
+
+<h2>How to report a problem</h2>
+<p>If something does not work, copy the template below, fill it in, and send it to the CuisineEase team (<strong>cuisineease@gmail.com</strong>):</p>
+<div class="report-box">WHAT I WAS TRYING TO DO:
+(e.g. "Place an order as a customer")
+
+STEP NUMBER FROM THIS GUIDE:
+(e.g. "Step 16")
+
+WHAT I DID — step by step:
+1.
+2.
+3.
+
+WHAT I EXPECTED TO HAPPEN:
+
+WHAT ACTUALLY HAPPENED:
+
+MY ROLE:  Customer / Restaurant Manager / Visitor
+
+EMAIL USED FOR TESTING:
+
+BROWSER:  Chrome / Firefox / Edge
+
+DEVICE:  Phone / Laptop / Tablet
+
+SCREENSHOT:  [attach a photo of the screen]</div>
+
+<h2>Things that may not work yet (this is normal)</h2>
+<ul>
+  <li><strong>Google sign-in</strong> — may not be fully set up; use email registration instead</li>
+  <li><strong>Card and PayPal payments</strong> — use Mobile Money (MTN or Orange) for testing</li>
+  <li><strong>Chat / Messages</strong> — may show "coming soon"</li>
+  <li><strong>Restaurant approval</strong> — new restaurants may wait up to 48 hours before the manager dashboard is active</li>
+  <li><strong>Menu import button</strong> — may not do anything yet</li>
+  <li><strong>Some charts and statistics</strong> — may show sample or empty data until real orders exist</li>
+</ul>
+
+<div class="footer">
+  CuisineEase Testing Guide · https://www.cuisineease.com · Contact: cuisineease@gmail.com · +237 698 512 770 · June 2026
+</div>
+
+</body>
+</html>

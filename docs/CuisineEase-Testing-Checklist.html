@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CuisineEase — Quick Testing Checklist</title>
+  <style>
+    @page { margin: 14mm 12mm; size: A4; }
+    body {
+      font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      color: #1a1a1a;
+      margin: 0;
+    }
+    h1 {
+      font-size: 20pt;
+      color: #c2410c;
+      border-bottom: 3px solid #f97316;
+      padding-bottom: 6px;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 12pt;
+      color: #9a3412;
+      margin-top: 16px;
+      page-break-after: avoid;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px;
+      font-size: 10pt;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 6px 8px;
+      vertical-align: top;
+    }
+    th { background: #fff7ed; }
+    .intro {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 10px 12px;
+      margin: 10px 0;
+      font-size: 10pt;
+    }
+    .check { width: 28px; text-align: center; font-size: 14pt; }
+    .pass { width: 50px; text-align: center; }
+    .notes { width: 35%; font-size: 9pt; color: #4b5563; }
+    .footer {
+      margin-top: 16px;
+      font-size: 8.5pt;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 8px;
+    }
+    .tester-info td { height: 28px; }
+  </style>
+</head>
+<body>
+
+<h1>CuisineEase — Quick Testing Checklist</h1>
+
+<div class="intro">
+  <strong>Website:</strong> https://www.cuisineease.com &nbsp;|&nbsp;
+  <strong>Password example:</strong> TestPass1! &nbsp;|&nbsp;
+  <strong>Phone example:</strong> +237 677 123 456<br>
+  Use two browsers: one for <strong>Manager</strong>, one for <strong>Customer</strong>. Full step-by-step instructions are in the <em>Testing Guide</em> document.
+</div>
+
+<h2>Tester information</h2>
+<table class="tester-info">
+  <tr><th style="width:30%">Tester name</th><td></td></tr>
+  <tr><th>Date</th><td></td></tr>
+  <tr><th>Device / browser</th><td></td></tr>
+  <tr><th>Manager email used</th><td></td></tr>
+  <tr><th>Customer email used</th><td></td></tr>
+</table>
+
+<h2>Test in this order</h2>
+<table>
+  <tr>
+    <th class="check">☐</th>
+    <th>#</th>
+    <th>What to test</th>
+    <th class="pass">Pass?</th>
+    <th class="notes">Notes / issues</th>
+  </tr>
+  <tr><td class="check">☐</td><td>1</td><td>Register restaurant (3 steps) at /auth/admin/register</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>2</td><td>Manager receives email &amp; sets password</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>3</td><td>Manager logs in successfully</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>4</td><td>Manager adds a menu item (Add New Menu)</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>5</td><td>Manager adds a table section and table</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>6</td><td>Customer registers at /auth/customer/register</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>7</td><td>Customer verifies email (6-digit code)</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>8</td><td>Customer logs in → sees dashboard</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>9</td><td>Customer finds restaurant &amp; browses menu</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>10</td><td>Customer adds item to cart</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>11</td><td>Customer pays with Mobile Money &amp; places order</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>12</td><td>Order appears in customer Order History</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>13</td><td>Order appears in manager Orders</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>14</td><td>Manager updates status: Preparing → Ready → Delivered</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>15</td><td>Customer sees updated order status</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>16</td><td>Customer books a table (reservation)</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>17</td><td>Manager sees reservation in Reservations</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>18</td><td>Customer submits a review</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>19</td><td>Manager sees review in Reviews</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>20</td><td>Customer updates profile in Settings</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>21</td><td>Public Contact form works (/contact)</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>22</td><td>Logout works; wrong password shows error</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+  <tr><td class="check">☐</td><td>23</td><td>Site works on mobile / small screen</td><td class="pass">Y / N</td><td class="notes"></td></tr>
+</table>
+
+<h2>Overall result</h2>
+<table class="tester-info">
+  <tr><th style="width:30%">Total passed</th><td>_____ / 23</td></tr>
+  <tr><th>Ready for launch?</th><td>Yes / No / Needs fixes</td></tr>
+  <tr><th>Main issues found</th><td></td></tr>
+  <tr><th>Send report to</th><td>cuisineease@gmail.com</td></tr>
+</table>
+
+<div class="footer">
+  CuisineEase Quick Testing Checklist · https://www.cuisineease.com · June 2026
+</div>
+
+</body>
+</html>

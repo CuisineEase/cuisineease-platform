@@ -1,0 +1,30 @@
+# Environment
+.env
+.env.*
+!.env.example
+!.env_sample
+
+# Build artifacts
+dist/
+build/
+.next/
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+.cursor/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python (from docs/ generators if run locally)
+__pycache__/
+*.pyc
+.venv/
+
+# Coverage
+coverage/
