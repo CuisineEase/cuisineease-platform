@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CuisineEase — Restaurant Partner Invitation</title>
   <style>
-    /* ─── Reset & Base ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -26,65 +25,49 @@
       --white:     #ffffff;
     }
 
-    @page {
-      size: A4;
-      margin: 0;
-    }
+    @page { size: A4; margin: 0; }
 
     body {
       font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
       font-size: 10.5pt;
       line-height: 1.65;
       color: var(--stone-900);
-      background: var(--white);
     }
 
-    /* ─── Layout ─── */
     .page {
       width: 210mm;
       min-height: 297mm;
-      padding: 18mm 20mm 16mm 20mm;
+      padding: 16mm 20mm 14mm 20mm;
       margin: 0 auto;
       background: var(--white);
     }
 
-    /* ─── Letterhead ─── */
+    /* ── Letterhead ── */
     .letterhead {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 8mm;
+      padding-bottom: 8mm;
+      margin-bottom: 10mm;
       border-bottom: 3px solid var(--amber-500);
-      padding-bottom: 10mm;
-      margin-bottom: 12mm;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .brand-logo {
+      width: 56mm;
+      height: auto;
+      flex-shrink: 0;
     }
 
-    .brand-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--amber-500), var(--orange-600));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
+    .brand-text { flex: 1; }
 
     .brand-name {
-      font-size: 22pt;
+      font-size: 20pt;
       font-weight: 800;
       background: linear-gradient(100deg, var(--amber-600), var(--orange-600));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
+      line-height: 1.1;
     }
 
     .brand-tagline {
@@ -92,51 +75,52 @@
       color: var(--stone-500);
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
-    .letterhead-right {
+    .header-right {
       text-align: right;
+      flex-shrink: 0;
     }
 
-    .letterhead-right p {
+    .header-right p {
       font-size: 8pt;
       color: var(--stone-500);
-      line-height: 1.8;
+      line-height: 1.9;
+      text-align: right;
+      margin: 0;
     }
 
-    .letterhead-right strong {
-      color: var(--stone-700);
-    }
+    .header-right strong { color: var(--stone-700); }
 
-    /* ─── Divider Banner ─── */
+    /* ── Banner ── */
     .banner {
       background: linear-gradient(90deg, var(--amber-500) 0%, var(--orange-600) 100%);
       color: white;
-      padding: 5mm 10mm;
+      padding: 4.5mm 8mm;
       border-radius: 6px;
       text-align: center;
-      margin-bottom: 10mm;
+      margin-bottom: 8mm;
       font-size: 9.5pt;
       font-weight: 600;
       letter-spacing: 0.3px;
     }
 
-    /* ─── Headings ─── */
+    /* ── Typography ── */
     h1 {
-      font-size: 16pt;
+      font-size: 14.5pt;
       font-weight: 800;
       color: var(--stone-900);
-      margin-bottom: 5mm;
+      margin-bottom: 4mm;
       line-height: 1.3;
     }
 
     h2 {
-      font-size: 11.5pt;
+      font-size: 10.5pt;
       font-weight: 700;
       color: var(--amber-700);
       margin-top: 7mm;
-      margin-bottom: 3mm;
+      margin-bottom: 2.5mm;
       padding-bottom: 1.5mm;
       border-bottom: 1.5px solid var(--amber-200);
       text-transform: uppercase;
@@ -151,20 +135,24 @@
       margin-bottom: 1.5mm;
     }
 
-    p {
-      margin-bottom: 3mm;
-      color: var(--stone-700);
-      text-align: justify;
-    }
+    p { margin-bottom: 2.5mm; color: var(--stone-700); text-align: justify; }
 
     .salutation {
       font-size: 10.5pt;
       font-weight: 600;
       color: var(--stone-900);
-      margin-bottom: 4mm;
+      margin-bottom: 3.5mm;
     }
 
-    /* ─── Feature Grid ─── */
+    .dateline {
+      text-align: right;
+      font-size: 9pt;
+      color: var(--stone-500);
+      margin-bottom: 5mm;
+      margin-top: 0;
+    }
+
+    /* ── Feature Grid ── */
     .feature-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -176,7 +164,7 @@
       border: 1.5px solid var(--amber-200);
       border-left: 3px solid var(--amber-500);
       border-radius: 4px;
-      padding: 3mm 4mm;
+      padding: 3mm 3.5mm;
       background: var(--amber-50);
     }
 
@@ -191,55 +179,38 @@
       font-size: 8.5pt;
       margin-bottom: 0;
       color: var(--stone-700);
-    }
-
-    .feature-card ul {
-      font-size: 8.5pt;
-      color: var(--stone-700);
-      padding-left: 4mm;
-      margin-top: 1mm;
-    }
-
-    .feature-card ul li {
-      margin-bottom: 0.5mm;
-    }
-
-    /* ─── Benefits Table ─── */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 4mm 0;
-      font-size: 9pt;
-    }
-
-    thead th {
-      background: linear-gradient(90deg, var(--amber-500), var(--orange-600));
-      color: white;
-      padding: 2.5mm 4mm;
       text-align: left;
-      font-weight: 700;
-      font-size: 8.5pt;
-      letter-spacing: 0.3px;
     }
 
-    tbody td {
-      padding: 2.5mm 4mm;
-      border-bottom: 1px solid var(--stone-300);
-      vertical-align: top;
+    /* ── Benefits ── */
+    .benefit-list {
+      list-style: none;
+      padding: 0;
+      margin: 3mm 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5mm 8mm;
+    }
+
+    .benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5mm;
+      font-size: 9pt;
       color: var(--stone-700);
+      padding: 2mm 0;
+      border-bottom: 1px solid var(--stone-100);
     }
 
-    tbody tr:nth-child(even) td {
-      background: var(--amber-50);
+    .benefit-list li::before {
+      content: '✓';
+      color: var(--amber-600);
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 0.5px;
     }
 
-    tbody td:first-child {
-      font-weight: 600;
-      color: var(--amber-700);
-      width: 35%;
-    }
-
-    /* ─── Steps ─── */
+    /* ── Steps ── */
     .steps {
       counter-reset: step;
       margin: 4mm 0;
@@ -254,9 +225,9 @@
     }
 
     .step-num {
-      width: 10mm;
-      height: 10mm;
-      min-width: 10mm;
+      width: 9mm;
+      height: 9mm;
+      min-width: 9mm;
       background: linear-gradient(135deg, var(--amber-500), var(--orange-600));
       color: white;
       border-radius: 50%;
@@ -264,96 +235,67 @@
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 11pt;
+      font-size: 10pt;
       flex-shrink: 0;
     }
 
-    .step-content h3 {
-      margin-top: 0.5mm;
-      font-size: 9.5pt;
-    }
+    .step-content h3 { margin-top: 0.5mm; font-size: 9.5pt; margin-bottom: 1mm; }
+    .step-content p { font-size: 8.5pt; margin-bottom: 0; text-align: left; }
 
-    .step-content p {
-      font-size: 8.5pt;
-      margin-bottom: 0;
-    }
-
-    /* ─── Quote Block ─── */
-    blockquote {
-      border-left: 3px solid var(--amber-500);
-      padding: 3mm 5mm;
-      margin: 4mm 0;
-      background: var(--amber-50);
-      border-radius: 0 4px 4px 0;
-      font-style: italic;
-      font-size: 9pt;
-      color: var(--stone-700);
-    }
-
-    blockquote cite {
-      display: block;
-      margin-top: 2mm;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 8pt;
-      color: var(--amber-700);
-    }
-
-    /* ─── CTA Box ─── */
-    .cta-box {
-      border: 2px solid var(--amber-500);
+    /* ── Pricing Callout ── */
+    .pricing-callout {
+      border: 2px dashed var(--amber-400);
       background: var(--amber-50);
       border-radius: 6px;
       padding: 5mm 6mm;
-      margin: 6mm 0;
+      margin: 5mm 0;
       text-align: center;
     }
 
-    .cta-box h3 {
+    .pricing-callout h3 {
       font-size: 11pt;
       color: var(--amber-700);
       margin-top: 0;
-      margin-bottom: 2mm;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-bottom: 2.5mm;
     }
 
-    .cta-box p {
+    .pricing-callout p {
       text-align: center;
       font-size: 9pt;
       margin-bottom: 3mm;
     }
 
-    .contact-grid {
+    .pricing-callout .contact-row {
       display: flex;
       justify-content: center;
-      gap: 8mm;
+      gap: 10mm;
       margin-top: 3mm;
+      flex-wrap: wrap;
     }
 
-    .contact-item {
+    .pricing-callout .contact-item {
       display: flex;
       align-items: center;
       gap: 2mm;
       font-size: 9pt;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--stone-900);
     }
 
-    .contact-icon {
-      width: 8mm;
-      height: 8mm;
+    .pricing-callout .contact-icon {
+      width: 7.5mm;
+      height: 7.5mm;
       background: var(--amber-500);
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 9pt;
+      font-size: 8pt;
       flex-shrink: 0;
     }
 
-    /* ─── Signature Block ─── */
+    /* ── Signature ── */
     .signature {
       margin-top: 8mm;
       padding-top: 4mm;
@@ -361,9 +303,17 @@
     }
 
     .signature p {
-      font-size: 9pt;
+      font-size: 9.5pt;
       margin-bottom: 1mm;
       font-weight: 600;
+      color: var(--stone-900);
+      text-align: left;
+    }
+
+    .signature .ceo-name {
+      font-size: 11.5pt;
+      margin-top: 4mm;
+      font-weight: 800;
       color: var(--stone-900);
     }
 
@@ -390,316 +340,249 @@
       text-align: center;
     }
 
-    /* ─── Pricing Highlight ─── */
-    .pricing-box {
-      display: flex;
-      gap: 3mm;
-      margin: 4mm 0;
-      flex-wrap: wrap;
-    }
-
-    .pricing-item {
-      flex: 1;
-      min-width: 35mm;
-      border: 1.5px solid var(--amber-200);
-      border-radius: 6px;
-      padding: 3mm;
-      text-align: center;
-      background: var(--white);
-    }
-
-    .pricing-item.highlight {
-      border-color: var(--amber-500);
-      background: var(--amber-50);
-    }
-
-    .pricing-item .label {
-      font-size: 7.5pt;
-      color: var(--stone-500);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1mm;
-    }
-
-    .pricing-item .value {
-      font-size: 12pt;
-      font-weight: 800;
-      color: var(--amber-700);
-    }
-
-    .pricing-item.highlight .value {
-      color: var(--orange-600);
-    }
-
-    /* ─── Page break ─── */
-    .page-break {
-      page-break-before: always;
-    }
-
     @media print {
       body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
+<div class="page">
 
-    <!-- ── LETTERHEAD ── -->
-    <header class="letterhead">
-      <div class="brand">
-        <div class="brand-icon">CE</div>
-        <div>
-          <div class="brand-name">CuisineEase</div>
-          <div class="brand-tagline">Smart Restaurant Management Platform</div>
-        </div>
-      </div>
-      <div class="letterhead-right">
-        <p><strong>CuisineEase Headquarters</strong></p>
-        <p>Buea, Cameroon</p>
-        <p>Email: <strong>cuisineease@gmail.com</strong></p>
-        <p>Tel: <strong>+237 698 512 770</strong></p>
-      </div>
-    </header>
-
-    <!-- ── BANNER ── -->
-    <div class="banner">
-      Invitation to Partner with CuisineEase — Transforming Restaurant Operations Across Cameroon
+  <!-- ── LETTERHEAD ── -->
+  <header class="letterhead">
+    <img src="./images/logo.png" alt="CuisineEase Logo" class="brand-logo" />
+    <div class="brand-text">
+      <div class="brand-name">CuisineEase</div>
+      <div class="brand-tagline">Smart Restaurant Management Platform</div>
     </div>
-
-    <!-- ── DATELINE ── -->
-    <p style="text-align: right; font-size: 9pt; color: var(--stone-500); margin-bottom: 5mm;">
-      Buea, Cameroon &nbsp;|&nbsp; June 2026
-    </p>
-
-    <!-- ── SALUTATION ── -->
-    <p class="salutation">Dear Restaurant Partner,</p>
-
-    <!-- ── INTRO ── -->
-    <h1>You Deserve Technology That Works as Hard as You Do</h1>
-
-    <p>
-      We are writing to you as the CEO of <strong>CuisineEase</strong> — Cameroon's comprehensive,
-      all-in-one restaurant management platform. Our mission is simple: to give every restaurant,
-      from intimate local eateries to growing full-service dining establishments, the technology
-      they need to serve more customers, run smoother operations, and grow their revenue sustainably.
-    </p>
-    <p>
-      We have built CuisineEase because we believe that the future of African restaurants lies in
-      digital empowerment — not in expensive, disconnected tools that create more problems than
-      they solve. CuisineEase brings your entire restaurant operation under one roof: customer
-      ordering, kitchen management, delivery dispatch, table reservations, staff coordination,
-      analytics, and more.
-    </p>
-    <p>
-      Whether you run a roadside grill in Buea, a fast-food counter in Douala, or an upscale
-      bistro in Yaoundé, CuisineEase adapts to the way you actually do business. We are inviting
-      you today to become one of our founding restaurant partners.
-    </p>
-
-    <!-- ── WHAT IS CUISINEEASE ── -->
-    <h2>What Is CuisineEase?</h2>
-
-    <p>
-      CuisineEase is a cloud-based restaurant management platform available on any device —
-      phone, tablet, or desktop computer. It connects your restaurant directly to customers
-      through a beautifully designed mobile app while giving you a powerful manager dashboard
-      to control every aspect of your operations. The platform is available in
-      <strong>English and French</strong>, and is designed to work reliably even on modest
-      internet connections.
-    </p>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>📱 Customer Mobile App</h3>
-        <p>Your restaurant is listed in the CuisineEase app where customers browse your menu, place orders, make reservations, and track their food in real time.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🖥️ Manager Dashboard</h3>
-        <p>Complete control over menus, orders, tables, staff, inventory, and analytics — all from one screen, accessible anywhere.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🍳 Chef Kitchen Display</h3>
-        <p>A live, digital kitchen display replaces paper tickets. Orders appear instantly, organized by priority and station — reducing errors and speeding up service.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🚴 Driver & Delivery Network</h3>
-        <p>Built-in driver management, real-time delivery tracking, and dispatch — your own delivery system without third-party integrations.</p>
-      </div>
-      <div class="feature-card">
-        <h3>📊 Analytics & Reporting</h3>
-        <p>Track sales, popular items, peak hours, staff performance, and delivery stats. Make decisions backed by real data, not guesswork.</p>
-      </div>
-      <div class="feature-card">
-        <h3>👥 Staff Management</h3>
-        <p>Invite and manage waiters, chefs, and drivers. Assign roles, track shifts, and monitor performance — all in one place.</p>
-      </div>
+    <div class="header-right">
+      <p><strong>CuisineEase</strong></p>
+      <p>Email: <strong>cuisineease@gmail.com</strong></p>
+      <p>Tel: <strong>+237 698 512 770</strong></p>
+      <p>Platform: <strong>app.cuisineease.com</strong></p>
     </div>
+  </header>
 
-    <!-- ── BENEFITS ── -->
-    <h2>Real Benefits for Real Restaurants</h2>
+  <!-- ── BANNER ── -->
+  <div class="banner">
+    Invitation to Partner with CuisineEase — Connect Your Restaurant to More Customers
+  </div>
 
-    <p>Here is what restaurant owners tell us after joining CuisineEase:</p>
+  <!-- ── DATELINE ── -->
+  <p class="dateline">June 2026</p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Benefit</th>
-          <th>Real-World Impact</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>More Orders</td>
-          <td>Restaurants gain access to CuisineEase's growing user base. Average order volume increases 30–50% within the first 3 months of going live.</td>
-        </tr>
-        <tr>
-          <td>Fewer Phone Calls</td>
-          <td>Digital ordering through the app eliminates phone order mistakes and frees your staff to focus on in-house dining guests.</td>
-        </tr>
-        <tr>
-          <td>Organized Kitchen</td>
-          <td>The Kitchen Display System replaces paper tickets and shouted orders. Kitchen staff report up to 40% faster preparation turnaround during peak hours.</td>
-        </tr>
-        <tr>
-          <td>Transparent Pricing</td>
-          <td>A simple per-order commission — no setup fees, no monthly subscriptions, no hidden charges, no minimum volume requirements.</td>
-        </tr>
-        <tr>
-          <td>Full Visibility</td>
-          <td>Owners see all sales, orders, and performance in real time — on their phone, at home, or on the go. No need to be physically at the restaurant to know what is happening.</td>
-        </tr>
-        <tr>
-          <td>Better Customer Experience</td>
-          <td>Online ordering, live tracking, review systems, and table reservations increase customer satisfaction and drive repeat visits.</td>
-        </tr>
-        <tr>
-          <td>One Platform, Everything</td>
-          <td>Replace 5 separate tools (POS, delivery app, reservation book, kitchen display, staff app) with one integrated platform — at a fraction of the cost.</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- ── SALUTATION ── -->
+  <p class="salutation">Dear Restaurant Partner,</p>
 
-    <!-- ── GETTING STARTED ── -->
-    <h2>Getting Started — In 5 Simple Steps</h2>
+  <!-- ── INTRO ── -->
+  <h1>Your Restaurant Deserves Technology That Works as Hard as You Do</h1>
 
-    <p>Joining CuisineEase takes less than 48 hours. Here is how it works:</p>
+  <p>
+    My name is Tamah Justene Nkwagoh, and I am the CEO and founder of
+    <strong>CuisineEase</strong>. I am reaching out to you personally because
+    I believe CuisineEase can genuinely help your restaurant reach more customers,
+    run more smoothly, and grow — and I want to show you exactly how.
+  </p>
 
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h3>Contact Us</h3>
-          <p>Reach out by email or phone to express your interest. Our partnerships team will respond within 24 hours to schedule an onboarding call.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h3>Onboarding Meeting</h3>
-          <p>We schedule a 30-minute call to understand your restaurant's setup — menu, average orders, delivery needs, and number of staff. We configure your account correctly from the start.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h3>Account Setup</h3>
-          <p>Our team creates your restaurant's account, imports or builds your menu, configures your kitchen display and driver network. You review everything before going live.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <h3>Go Live</h3>
-          <p>Your restaurant appears in the CuisineEase app. Your team is trained and ready. Digital orders start flowing immediately.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <h3>Ongoing Support</h3>
-          <p>A dedicated account contact is available whenever you need help. We provide training, updates, and continuous platform improvements — at no extra cost.</p>
-        </div>
-      </div>
-    </div>
+  <p>
+    CuisineEase is a complete restaurant management platform that connects your
+    restaurant to customers through a mobile app, while giving you a powerful
+    dashboard to manage orders, kitchen operations, delivery, table reservations,
+    and your team — all from one place. Whether you run a small restaurant, a
+    takeaway counter, or a full-service dining establishment, CuisineEase is
+    built to fit the way you actually work.
+  </p>
 
-    <!-- ── PRICING ── -->
-    <h2>Simple, Transparent Pricing</h2>
+  <p>
+    We are currently welcoming a select group of restaurants to join our
+    platform during our launch phase, and I would love for yours to be among them.
+  </p>
 
-    <p>We believe in keeping things honest. CuisineEase operates on a straightforward per-order commission model:</p>
+  <!-- ── WHAT IS CUISINEEASE ── -->
+  <h2>What CuisineEase Does for Your Restaurant</h2>
 
-    <div class="pricing-box">
-      <div class="pricing-item">
-        <div class="label">Setup Fee</div>
-        <div class="value">FCFA 0</div>
-      </div>
-      <div class="pricing-item">
-        <div class="label">Monthly Subscription</div>
-        <div class="value">FCFA 0</div>
-      </div>
-      <div class="pricing-item highlight">
-        <div class="label">Per-Order Commission</div>
-        <div class="value">Contact Us</div>
-      </div>
-      <div class="pricing-item">
-        <div class="label">Minimum Volume</div>
-        <div class="value">None</div>
-      </div>
-    </div>
-
-    <p style="font-size: 8.5pt; color: var(--stone-500);">
-      <em>If you do not receive orders, you pay nothing. Our success is directly tied to yours. Contact us to receive our full partnership pricing schedule.</em>
-    </p>
-
-    <!-- ── TESTIMONIALS ── -->
-    <h2>What Restaurant Partners Are Saying</h2>
-
-    <blockquote>
-      "Before CuisineEase, we were writing orders on paper and losing them during rush hour. Now the kitchen display shows every order clearly and our chefs can prioritize perfectly. We reduced our average preparation time by 22 minutes during peak service."
-      <cite>— Manager, Buea Restaurant Group</cite>
-    </blockquote>
-
-    <blockquote>
-      "The delivery side was always our biggest headache. CuisineEase gave us our own driver network and a tracking system that actually works. Our customers constantly tell us how much they love seeing exactly where their food is. Our delivery sales have grown by 60% since we joined."
-      <cite>— Owner, Douala Casual Dining</cite>
-    </blockquote>
-
-    <blockquote>
-      "The analytics alone have changed how we run the business. We discovered that 40% of our orders come between 12pm and 1pm on weekdays. We now run a targeted lunch special during that window and it has become our highest-margin service of the week."
-      <cite>— Operations Lead, Yaoundé Bistro</cite>
-    </blockquote>
-
-    <!-- ── CTA ── -->
-    <div class="cta-box">
-      <h3>Ready to Grow Your Restaurant with CuisineEase?</h3>
-      <p>Schedule a <strong>free, no-obligation demonstration</strong> of the platform today. We will walk you through every feature, answer all your questions, and show you exactly how CuisineEase would work for your restaurant.</p>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <div class="contact-icon">✉</div>
-          cuisineease@gmail.com
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          +237 698 512 770
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🌐</div>
-          app.cuisineease.com
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SIGNATURE ── -->
-    <div class="signature">
-      <p>Warm regards,</p>
-      <p style="font-size: 12pt; margin-top: 4mm;"><strong>Tamah Justene Nkwagoh</strong></p>
-      <p class="role">Chief Executive Officer &nbsp;|&nbsp; CuisineEase</p>
-      <p class="tagline">"Serving more customers. Running smoother operations. Growing together."</p>
-      <p class="footnote">
-        CuisineEase — Registered Restaurant Technology Platform. All rights reserved.<br/>
-        This invitation is issued by CuisineEase, Buea, Cameroon. &nbsp;|&nbsp; June 2026
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>📱 Customer Mobile App</h3>
+      <p>
+        Your restaurant is listed in the CuisineEase mobile app, where customers
+        can browse your full menu, place delivery or takeout orders, make table
+        reservations, and track their order in real time — from the kitchen to
+        their doorstep.
       </p>
     </div>
-
+    <div class="feature-card">
+      <h3>🖥️ Manager Dashboard</h3>
+      <p>
+        A complete back-office portal to manage your menu, track all orders
+        (dine-in, takeout, delivery) in one view, monitor table sessions,
+        manage staff, and review your performance data — accessible from any
+        phone, tablet, or computer.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h3>🍳 Kitchen Display System</h3>
+      <p>
+        A dedicated Kitchen Portal streams live orders directly to your kitchen
+        screen, replacing paper tickets. Orders are organized by time and
+        priority, helping your kitchen team work faster and with fewer mistakes.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h3>🚴 Driver &amp; Delivery Management</h3>
+      <p>
+        Manage your own delivery operations without third-party integrations.
+        Assign drivers, track deliveries on a live map, and give your customers
+        real-time visibility into where their food is.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h3>📊 Analytics &amp; Reporting</h3>
+      <p>
+        Understand your sales trends, busiest hours, most popular items, and
+        staff performance with clear reports. Make decisions based on real data
+        rather than guesswork.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h3>👥 Staff Management</h3>
+      <p>
+        Invite and manage your waitstaff, kitchen team, and drivers. Assign
+        roles, track performance, and coordinate your entire team from one
+        platform.
+      </p>
+    </div>
   </div>
+
+  <p style="margin-top: 3mm;">
+    CuisineEase is available in <strong>English and French</strong>, and works
+    on any device with a browser — phone, tablet, or desktop. No complex
+    installation required. Our team handles the setup and ongoing platform
+    maintenance for you.
+  </p>
+
+  <!-- ── BENEFITS ── -->
+  <h2>What This Means for Your Business</h2>
+
+  <p>Here is what CuisineEase makes possible for your restaurant:</p>
+
+  <ul class="benefit-list">
+    <li><strong>Reach more customers</strong> — every person browsing the CuisineEase app near your restaurant is a potential new customer, at no extra marketing cost</li>
+    <li><strong>More order types in one place</strong> — dine-in, takeout, and delivery orders all managed from the same dashboard, without juggling separate tools</li>
+    <li><strong>Fewer phone order mistakes</strong> — digital ordering through the app removes the errors that come with handwritten or verbal phone orders</li>
+    <li><strong>Organized kitchen operations</strong> — the Kitchen Display System gives your chefs a clear, real-time view of every order, reducing confusion during busy service</li>
+    <li><strong>Real-time visibility</strong> — see your sales, orders, and restaurant performance from anywhere, at any time, on your phone</li>
+    <li><strong>Built-in delivery management</strong> — manage your own drivers without paying third-party delivery commissions</li>
+    <li><strong>Better customer experience</strong> — online ordering, live tracking, and a smooth reservation system keep your customers coming back</li>
+    <li><strong>One platform instead of many</strong> — replace disconnected tools (POS, delivery app, reservation book, kitchen display, staff app) with one integrated system</li>
+  </ul>
+
+  <!-- ── GETTING STARTED ── -->
+  <h2>Getting Started — 5 Simple Steps</h2>
+
+  <p>Joining CuisineEase is straightforward. Here is what the process looks like:</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Contact Us</h3>
+        <p>Reach out by email or phone to express your interest. We will respond within 24 hours to schedule an introductory call.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Discovery Call</h3>
+        <p>We schedule a 30-minute call to understand your restaurant's setup — your menu, average daily orders, delivery needs, and team size — so we can configure everything correctly from the start.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Account Setup</h3>
+        <p>Our team creates your restaurant's account, builds or imports your menu, and configures your kitchen display and driver network. You review everything before going live.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Go Live</h3>
+        <p>Your restaurant appears in the CuisineEase app. Your team receives a brief walkthrough. Digital orders start flowing immediately.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Ongoing Support</h3>
+        <p>A dedicated account contact is available whenever you need help. We provide training, platform updates, and continuous improvements — at no extra cost.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRICING ── -->
+  <h2>Pricing</h2>
+
+  <div class="pricing-callout">
+    <h3>Simple, Transparent Partnership Model</h3>
+    <p>
+      We believe in keeping things honest. CuisineEase operates on a
+      <strong>straightforward per-order commission model</strong>. There are
+      <strong>no setup fees</strong> and <strong>no monthly subscriptions</strong>.
+      If you do not receive orders, you pay nothing.
+    </p>
+    <p>
+      Our commission rate is competitive and clearly communicated before you
+      commit. Our success is directly tied to yours — we grow when you grow.
+    </p>
+    <p>
+      <em>Contact us to discuss pricing and receive our full partnership schedule.</em>
+    </p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        cuisineease@gmail.com
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        +237 698 512 770
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        app.cuisineease.com
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <h2>See It in Action</h2>
+
+  <p>
+    The best way to understand what CuisineEase can do for your restaurant is
+    to see it for yourself. We offer a <strong>free, no-obligation demonstration</strong>
+    of the platform — in person or via video call — at a time that suits you.
+    We will walk you through every feature, answer all your questions, and show
+    you exactly how CuisineEase would work for your specific menu and operations.
+  </p>
+
+  <p>
+    You can also explore the customer experience today by visiting
+    <strong>app.cuisineease.com</strong> on your phone.
+  </p>
+
+  <!-- ── SIGNATURE ── -->
+  <div class="signature">
+    <p>Thank you for your time and consideration. I look forward to hearing from you.</p>
+    <p>Warm regards,</p>
+    <p class="ceo-name">Tamah Justene Nkwagoh</p>
+    <p class="role">Chief Executive Officer &nbsp;|&nbsp; CuisineEase</p>
+    <p class="tagline">"Serving more customers. Running smoother operations. Growing together."</p>
+    <p class="footnote">
+      CuisineEase &nbsp;|&nbsp; cuisineease@gmail.com &nbsp;|&nbsp; +237 698 512 770<br/>
+      app.cuisineease.com &nbsp;|&nbsp; June 2026
+    </p>
+  </div>
+
+</div>
 </body>
 </html>
