@@ -10,7 +10,7 @@
 
 **Email:** cuisineease@gmail.com | **Phone/WhatsApp:** +237 698 512 770
 
-**Platform:** app.cuisineease.com
+**Platform:** https://www.cuisineease.com/
 
 ---
 
@@ -102,7 +102,7 @@ Our success is directly tied to yours. Contact us to discuss pricing and receive
 
 The best way to understand what CuisineEase can do for your restaurant is to see it for yourself. We offer a **free, no-obligation demonstration** of the platform — in person or via video call — at a time that suits you. We will walk you through every feature, answer all your questions, and show you exactly how CuisineEase would work for your specific menu and operations.
 
-You can also explore the customer experience today by visiting **app.cuisineease.com** on your phone.
+You can also explore the customer experience today by visiting **https://www.cuisineease.com/** on your phone.
 
 ---
 
@@ -112,7 +112,7 @@ You can also explore the customer experience today by visiting **app.cuisineease
 |---|---|
 | **Email** | cuisineease@gmail.com |
 | **Phone / WhatsApp** | +237 698 512 770 |
-| **Platform** | app.cuisineease.com |
+| **Platform** | https://www.cuisineease.com/ |
 | **CEO** | Tamah Justene Nkwagoh |
 
 ---
